@@ -2,6 +2,7 @@ package demo
 
 import com.redis.RedisClientPool
 import io.gatling.core.Predef._
+import io.gatling.core.feeder.BatchableFeederBuilder
 import io.gatling.http.Predef._
 import io.gatling.redis.Predef.redisFeeder
 import io.gatling.redis.feeder.RedisFeederBuilder
@@ -12,7 +13,7 @@ object SearchFromHomePage {
 
   private lazy val requestName0 = "SearchAjaxSuggest"
 
-  val quantity = csv("data/quantity.csv").random
+  val quantity: BatchableFeederBuilder[String]#F = csv("data/quantity.csv").random
   val searchKey = csv("data/searchPageKey.csv").random
   val dataFeederPool = new RedisClientPool("localhost", 6379)
   val myDataFeeder: RedisFeederBuilder =

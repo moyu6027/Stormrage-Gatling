@@ -22,4 +22,11 @@ object Headers {
 		"Content-Type" -> "application/x-www-form-urlencoded",
 		"X-Requested-With" -> "XMLHttpRequest",
 	)
+
+	// Multipart Form headers
+	val headersForm = Map(
+		"Accept" -> "application/json, application/x-www-form-urlencoded, text/javascript, */*; q=0.01",
+		"Content-Type" -> "multipart/form-data",
+		"X-Requested-With" -> "XMLHttpRequest",
+	)
 }
