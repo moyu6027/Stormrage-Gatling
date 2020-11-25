@@ -10,6 +10,9 @@ import util.{GatlingFeeder, GatlingHelper}
 object UploadObject {
 
 	lazy val requestName = "COMSS-agent microservice Upload Object"
+	lazy val appAk = "ALDI-LD"
+	lazy val appSk = "123456"
+	lazy val secret = "19"
 	val fileFeeder: Feeder[String] = GatlingFeeder.getFileListFeeder("src/gatling/resources/data")
 
 	val uploadObjectStreamWithEncryption: ChainBuilder =
@@ -17,9 +20,9 @@ object UploadObject {
 		.exec(http(requestName)
 		.post("/api/v1/oss/uploadObject/stream/withEncryption")
 		.headers(Headers.headersForm)
-		.formParam("appAk","ALDI-LD")
-			.formParam("appSk","123456")
-			.formParam("secret","19")
+		.formParam("appAK",appAk)
+			.formParam("appSK",appSk)
+			.formParam("secret",secret)
 			.formUpload("file","${file}")
 		.check(status.is(200)))
 		.exitHereIfFailed

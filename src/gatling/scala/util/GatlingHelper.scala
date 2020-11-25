@@ -39,6 +39,10 @@ object GatlingHelper {
     return fileList(random_index).toString
   }
 
+  def randomFileName(length: Int): String = {
+    rnd.alphanumeric.filter(_.isLetter).take(length).mkString
+  }
+
 
 
 }
