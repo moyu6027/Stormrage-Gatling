@@ -37,6 +37,7 @@ gatling {
     simulations = {
         include "**/simulations/*Simu.scala"
         include "**/simulations/*Simulation.scala"
+        include "**/simulations/*.scala"
     }
     systemProperties = ['file.encoding': 'UTF-8']
 }
@@ -53,6 +54,7 @@ dependencies {
     gatling 'com.google.code.gson:gson:2.8.6' // <1>
     gatlingImplementation 'org.apache.commons:commons-lang3:3.4' // <2>
     gatlingRuntimeOnly 'cglib:cglib-nodep:3.2.0' // <3>
+    gatlingImplementation 'ru.tinkoff:gatling-picatinny_2.12:0.6.1' //
 }
 
 group = 'com.gatling.sample'

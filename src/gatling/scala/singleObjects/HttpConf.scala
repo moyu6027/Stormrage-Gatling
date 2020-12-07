@@ -2,11 +2,13 @@ package singleObjects
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+import ru.tinkoff.gatling.config.SimulationConfig
+import ru.tinkoff.gatling.config.SimulationConfig._
 
 /** HTTP configuration */
 object HttpConf {
 
-		private val env_url ="http://open-ai-gateway.uat.homecreditcfc.cn" // an optional url if a variable is not set in CLI command
+		private val env_url = SimulationConfig.baseUrl // an optional url if a variable is not set in CLI command
 //	private val log_auth_qa = "base_auth"
 //	private val pass_auth_qa = "base_auth"
 
