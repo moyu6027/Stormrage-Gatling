@@ -5,7 +5,7 @@ Fully parametrized performance scenarios based on Gatling with Scala.
 <h3>Usage</h3>
 1. execute command with sample parametrization:
 
-    `./gradlew clean gatlingRun-simulations.CloseModel_ConstantConcurrentUsers \
+    `gradle clean gatlingRun-simulations.CloseModel_ConstantConcurrentUsers \
     -DUSERS=10 \
     -DBASE_URL=http://XXXX.com \
     -DDURATION=10`
@@ -21,8 +21,8 @@ In stormrage-gatling
 4. src - gatling Framework code
 
 In Src
-1. resources - bodies(body json), data(csv feeder data), gatling.conf(gatling Configuration), logback-test.xml(log level)
-2. simulations(Performance test SCENARIOS), singleObjects(http common), util(common function), demo(demo http request)
+1. resources - bodies(body json), data(csv feeder data), gatling.conf(gatling Configuration), logback-test.xml(log level), simulation.conf(user configuration files)
+2. simulations(Performance test setup and workload model), singleObjects(http common), util(common function), cases(http request api), scenario(Process scenario)
 
 The lifecycle is as below:
 
