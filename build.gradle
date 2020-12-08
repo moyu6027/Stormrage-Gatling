@@ -17,7 +17,7 @@ project.sourceSets {
 
 
 gatling {
-    toolVersion = '3.4.0' //Gatling version
+    // toolVersion = '3.4.2' //Gatling version
 
     // WARNING: options below only work when logback config file isn't provided
     logLevel = 'WARN' // logback root level
@@ -50,17 +50,17 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.4.0'
+    testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.4.2'
     gatling 'com.google.code.gson:gson:2.8.6' // <1>
     gatlingImplementation 'org.apache.commons:commons-lang3:3.4' // <2>
     gatlingRuntimeOnly 'cglib:cglib-nodep:3.2.0' // <3>
     gatlingImplementation 'ru.tinkoff:gatling-picatinny_2.12:0.6.1' //
 }
 
-group = 'com.gatling.sample'
-version = '3.4.0'
+//group = 'com.gatling.sample'
+//version = '3.4.2'
 sourceCompatibility = '1.8'
-ext['netty.version'] = '4.0.51.Final'
+//ext['netty.version'] = '4.0.51.Final'
 
 
 tasks.withType(JavaCompile) {

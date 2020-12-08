@@ -12,7 +12,8 @@ class baseObject {
 	lazy val appAk: String = getStringParam("appAk")
 	lazy val appSk: String = getStringParam("appSk")
 	lazy val secret: String = getStringParam("secret")
-	val dataPath: String = getStringParam("dataPath")
+	lazy val dataPath: String = getStringParam("dataPath")
 	val fileFeeder: Feeder[String] = GatlingFeeder.getFileListFeeder(dataPath)
+	val fileNameFeeder: Feeder[String] = GatlingFeeder.getRandomStringFeeder("filename",10)
 
 }

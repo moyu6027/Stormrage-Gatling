@@ -27,3 +27,5 @@ build.log
 
 # project files to ignore
 !/results/.gitkeep
+.gradle/
+.gradle/
