@@ -1,15 +1,14 @@
 package scenario
 
-import cases.{DownloadObject, UploadObject}
+import cases.{DownloadObject, MmockObject, UploadObject}
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
 import singleObjects._
 
 import java.text.SimpleDateFormat
 import java.util.TimeZone
-import scala.concurrent.duration._
 
-trait CommonScenario extends Simulation {
+trait MockScenario extends Simulation {
 
   /*** BEFORE ***/
   before {
@@ -30,37 +29,22 @@ trait CommonScenario extends Simulation {
 
   /***************** DEFINITION ************************/
   /*** NORMAL SCENARIOS ***/
-  def commonScenario(): ChainBuilder = {
-    exec(UploadObject.uploadStreamWithEncryption)
+  def mockScenario(): ChainBuilder = {
+    exec(MmockObject.monsterMock)
 //    .pause(1 * HttpConf.timeRatio seconds, 2 * HttpConf.timeRatio seconds)
-    .exec(DownloadObject.downloadStreamWithEncryption)
-  }
-
-  def commonScenarioWithGroups(): ChainBuilder = {
-    group("Upload") {
-      exec(UploadObject.uploadStreamWithEncryption)
-    }
-    .group("Download") {
-      exec(DownloadObject.downloadStreamWithEncryption)
-    }
   }
 
   /***************** PREPARATION ************************/
   /*** NORMAL SCENARIOS ***/
-  def commonScenario(name: String): ScenarioBuilder = scenario(name)
+  def mockScenario(name: String): ScenarioBuilder = scenario(name)
     .exec(
-      commonScenario()
+      mockScenario()
     )
 
-  def commonScenarioWithGroups(name: String): ScenarioBuilder = scenario(name)
-    .exec(
-      commonScenarioWithGroups()
-    )
-
-  def commonScenario(name: String, groupName: String): ScenarioBuilder = scenario(name)
+  def mockScenario(name: String, groupName: String): ScenarioBuilder = scenario(name)
     .group(groupName) {
       exec(
-        commonScenario(name)
+        mockScenario(name)
       )
     }
 
