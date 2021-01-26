@@ -22,7 +22,7 @@ import scala.concurrent.duration._
  */
 class OpenModel_AtOnceUsers extends CommonScenario {
 
-  val waitDuration: FiniteDuration = 5 second
+  val waitDuration: FiniteDuration = 5.second
   val userStep = 10
   /***************** SETUP ************************/
   setUp(

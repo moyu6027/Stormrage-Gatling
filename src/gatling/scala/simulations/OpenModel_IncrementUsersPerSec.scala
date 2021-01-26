@@ -43,8 +43,8 @@ class OpenModel_IncrementUsersPerSec extends CommonScenario {
       commonScenario("OpenModel_IncrementUsersPerSec").inject(
         incrementUsersPerSec(0.5)                               // usersPerSec
           .times(12)                                             // nbOfUsers
-          .eachLevelLasting(20 seconds)                                     // #############
-          .separatedByRampsLasting(0 seconds)                      // **
+          .eachLevelLasting(20.seconds)                                     // #############
+          .separatedByRampsLasting(0.seconds)                      // **
           .startingFrom(0.5),
       )
   )

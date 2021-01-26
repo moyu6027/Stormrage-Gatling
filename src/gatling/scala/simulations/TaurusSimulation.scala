@@ -36,7 +36,7 @@ class TaurusSimulation extends Simulation {
 
   val virtualUsers =
     if (rampUpTime > 0)
-      rampUsers(concurrency) during (rampUpTime seconds)
+      rampUsers(concurrency) during (rampUpTime.seconds)
     else
       atOnceUsers(concurrency)
 

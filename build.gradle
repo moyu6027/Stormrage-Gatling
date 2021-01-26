@@ -45,16 +45,18 @@ gatling {
 repositories {
     mavenLocal()
     maven {
-        url = uri('http://central')
+        url = uri('https://central')
     }
 }
 
 dependencies {
+//    compile 'org.scala-lang:scala-library:2.12.12'
     testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.4.2'
     gatling 'com.google.code.gson:gson:2.8.6' // <1>
     gatlingImplementation 'org.apache.commons:commons-lang3:3.4' // <2>
     gatlingRuntimeOnly 'cglib:cglib-nodep:3.2.0' // <3>
     gatlingImplementation 'ru.tinkoff:gatling-picatinny_2.12:0.6.1' //
+    gatlingImplementation 'ru.tinkoff:gatling-amqp-plugin_2.12:0.0.4'
 }
 
 //group = 'com.gatling.sample'

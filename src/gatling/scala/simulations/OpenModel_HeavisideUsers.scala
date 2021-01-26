@@ -40,11 +40,11 @@ class OpenModel_HeavisideUsers extends CommonScenario {
   setUp(
       commonScenario("OpenModel_HeavisideUsers").inject(
         atOnceUsers(1),                                // 0
-        nothingFor(5 seconds),
-        heavisideUsers(10000)  during (100 seconds),   // 1 - 111111111111111111111111111
-        heavisideUsers(100000)  during (400 seconds),  // 2 - 222222222222222222222222222222222222222222222
-        heavisideUsers(10000)  during (100 seconds),   // 3 - 333333333333333333333333333
-        nothingFor(5 seconds),                                //
+        nothingFor(5.seconds),
+        heavisideUsers(10000)  during (100.seconds),   // 1 - 111111111111111111111111111
+        heavisideUsers(100000)  during (400.seconds),  // 2 - 222222222222222222222222222222222222222222222
+        heavisideUsers(10000)  during (100.seconds),   // 3 - 333333333333333333333333333
+        nothingFor(5.seconds),                                //
         atOnceUsers(1)
       )
   )

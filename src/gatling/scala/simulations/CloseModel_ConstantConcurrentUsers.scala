@@ -11,8 +11,8 @@ class CloseModel_ConstantConcurrentUsers extends CommonScenario {
   /***************** SETUP ************************/
   setUp(
       commonScenario("CloseModel_ConstantConcurrentUsers").inject(
-        rampConcurrentUsers(1) to (HttpConf.userCount) during (HttpConf.rampDuration seconds),
-        constantConcurrentUsers(HttpConf.userCount) during (HttpConf.testDuration minutes)),
+        rampConcurrentUsers(1) to (HttpConf.userCount) during (HttpConf.rampDuration.seconds),
+        constantConcurrentUsers(HttpConf.userCount) during (HttpConf.testDuration.minutes)),
   )
   .protocols(HttpConf.httpConf)
 //      .assertions(

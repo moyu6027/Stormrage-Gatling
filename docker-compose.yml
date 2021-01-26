@@ -1,20 +1,105 @@
-version: '3.2'
-
+version: "3.8"
 services:
-  influxdb:
-    build: influxdb
+  gatling:
+    build: ./gatling
     restart: always
-    env_file: configuration.env
-    ports:
-      - '8086:8086'
-      - '2003:2003'
+    stdin_open: true
+    networks:
+      - gatling
+    tty: true
+    depends_on:
+      - grafana
+    volumes:
+      - ./gatling/results:/gatling/results:cached
+      - ./gatling/simulations:/gatling/user-files/simulations
+      - ./gatling/logbackTrace.xml:/gatling/conf/logback.xml
+      - ./gatling/gatling.conf:/gatling/conf/gatling.conf
+      - ./gatling/log:/gatling/log
     environment:
-      - INFLUXDB_GRAPHITE_ENABLED=true
-  grafana:
-    build: grafana
+      - baseUrl=http://mmock:8083
+      - execUsers=100
+      - execSeconds=600
+  nginx:
+    image: nginx
     restart: always
-    env_file: configuration.env
-    links:
-      - influxdb
+    volumes:
+      - ./gatling/results:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+    networks:
+      - gatling
+  mmock:
+    build: ./mmock
+    restart: always
+    volumes:
+      - ./mmock/config:/config
+    ports:
+      - "8082:8082"
+      - "8083:8083"
+      - "8084:8084"
+    networks:
+      - gatling
+  prometheus:
+    build: ./prometheus
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - gatling
+  influxdb:
+    container_name: influxdb
+    image: influxdb:latest
+    volumes:
+      - ./influxdb_gatling:/etc/influxdb
+      - influxdb-lib:/var/lib/influxdb
+    ports:
+      - 8093:8083
+      - 8086:8086
+      - 2003:2003
+    privileged: true
+    networks:
+      - gatling
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - gatling
+
+  promtail:
+    container_name: promtail
+    image: grafana/promtail:latest
+    volumes:
+      - ./loki_gatling/docker-config.yml:/etc/promtail/docker-config.yaml
+      - ./gatling/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    ports:
+      - "9080:9080"
+    networks:
+      - gatling
+
+  grafana:
+    build: ./grafana_gatling
+    container_name: grafana
+    restart: always
+    env_file:
+      - configuration.env
     ports:
       - '3000:3000'
+    links:
+      - influxdb:influxdb
+    depends_on:
+      - influxdb
+    privileged: true
+    networks:
+      - gatling
+
+networks:
+  gatling:
+
+volumes:
+  influxdb-lib:
+    external: false

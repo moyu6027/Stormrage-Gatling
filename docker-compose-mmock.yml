@@ -1,0 +1,33 @@
+version: "3.2"
+services:
+  gatling:
+    build: ./gatling
+    restart: always
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./gatling/results:/gatling/results:cached
+      - ./gatling/simulations:/gatling/user-files/simulations
+      - ./gatling/logback.xml:/gatling/conf/logback.xml
+      - ./gatling/gatling.conf:/gatling/conf/gatling.conf
+    environment:
+      - baseUrl=http://mmock:8083
+      - execUsers=1
+      - execSeconds=1
+  nginx:
+    image: nginx
+    restart: always
+    volumes:
+      - ./gatling/results:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
+  mmock:
+    build: ./mmock
+    restart: always
+    volumes:
+      - ./mmock/config:/config
+    ports:
+      - "8082:8082"
+      - "8083:8083"
+      - "8084:8084"

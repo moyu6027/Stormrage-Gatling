@@ -41,8 +41,8 @@ class CloseModel_IncrementConcurrentUsers extends CommonScenario {
     commonScenario("CloseModel_IncrementConcurrentUsers").inject(
       incrementConcurrentUsers(4)
         .times(10)
-        .eachLevelLasting(10 second)
-        .separatedByRampsLasting(0 second)
+        .eachLevelLasting(10.second)
+        .separatedByRampsLasting(0.second)
         .startingFrom(2)
   )
   .protocols(HttpConf.httpConf)
