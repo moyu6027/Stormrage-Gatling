@@ -17,7 +17,7 @@ services:
       - ./gatling/log:/gatling/log
     environment:
       - baseUrl=http://mmock:8083
-      - execUsers=100
+      - execUsers=50
       - execSeconds=600
   nginx:
     image: nginx
@@ -62,7 +62,7 @@ services:
       - gatling
   loki:
     container_name: loki
-    image: grafana/loki:latest
+    image: grafana/loki:1.5.0
     ports:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
@@ -71,7 +71,7 @@ services:
 
   promtail:
     container_name: promtail
-    image: grafana/promtail:latest
+    image: grafana/promtail:1.5.0
     volumes:
       - ./loki_gatling/docker-config.yml:/etc/promtail/docker-config.yaml
       - ./gatling/log:/var/log

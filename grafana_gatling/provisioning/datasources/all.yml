@@ -13,7 +13,7 @@ datasources:
       password: 'admin'
     editable: true
 
-  - name: 'prom1'
+  - name: 'prometheus-performance-gatling'
     type: 'prometheus'
     access: 'proxy'
     org_id: 1

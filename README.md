@@ -15,10 +15,17 @@ Fully parametrized performance scenarios based on Gatling with Scala.
 <h3>Structure</h3>
 
 In stormrage-gatling
-1. grafana - docker-compose file for grafana Configuration
-2. influxdb - docker-compose file for influxdb Configuration
+1. grafana - docker-compose-monitor file for grafana Configuration
+2. influxdb - docker-compose-monitor file for influxdb Configuration
 3. redis_feeder - docker-compose file for redis feeder server Configuration
 4. src - gatling Framework code
+5. gatling - demo for docker-compose
+6. grafana_gatling - docker-compose file for grafana Configuration
+7. influxdb_gatling - docker-compose file for influxdb Configuration
+8. loki_gatling - docker-compose file for Loki Configuration include promtail config
+9. mmock - Monster-Mock Server Configuration
+10. nginx - Nginx Configuration for Gatling Report
+11. prometheus - docker-compose file for Prometheus Configuration
 
 In Src
 1. resources - bodies(body json), data(csv feeder data), gatling.conf(gatling Configuration), logback-test.xml(log level), simulation.conf(user configuration files)
@@ -49,3 +56,5 @@ Make sure to use the proper load model that matches the load your live system ex
 * Implement realtime solution with `InfluxDb` and `Grafana`
 * Load tests analysis with aggregated data in `InfluxDb` displayed in comprehensive reports generated with `Grafana`
 * Handle comparison in `Grafana` with `JavaScript`
+* Load tests logs with `Loki`
+* Aggregated library with Cucumber Common Library
