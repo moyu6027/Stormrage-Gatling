@@ -1,3 +1,6 @@
+![Gatlinglogo](gatling_gun.png "Gatling logo")
+![Gatlinglogo](storm.png "Gatling logo")
+
 Stormrage-Gatling performance tests
 =========================
 Fully parametrized performance scenarios based on Gatling with Scala.
@@ -49,6 +52,9 @@ When it comes to load model, systems behave in 2 different ways:
 2. Open systems, where you control the arrival rate of users
 
 Make sure to use the proper load model that matches the load your live system experiences.
+
+<h3>Stormrage-Gatling Cloud Architecture Diagram</h3>
+![Gatling](Stormrage-Gatling%20Cloud.png "Gatling Architecture")
 
 <h3>To do in the future:</h3>
 
