@@ -1,5 +1,6 @@
 package scenario
 
+import cases.MmockObject.chineseName
 import cases.{DownloadObject, MmockObject, UploadObject}
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
@@ -15,6 +16,7 @@ trait MockScenario extends Simulation {
     val df:SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     df.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"))
     TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"))
+    println(chineseName)
     println(s"TimeZone is ${TimeZone.getDefault}")
     println(s"Running test on ${HttpConf.baseUrl}")
     println(s"Running test with ${HttpConf.userCount} users per each scenario")

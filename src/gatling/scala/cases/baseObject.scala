@@ -1,5 +1,6 @@
 package cases
 
+import cn.homecredit.qc.common.util.ChineseNames
 import io.gatling.core.Predef._
 import io.gatling.core.feeder.Feeder
 import io.gatling.core.structure.ChainBuilder
@@ -15,5 +16,5 @@ class baseObject {
 	lazy val dataPath: String = getStringParam("dataPath")
 	val fileFeeder: Feeder[String] = GatlingFeeder.getFileListFeeder(dataPath)
 	val fileNameFeeder: Feeder[String] = GatlingFeeder.getRandomStringFeeder("filename",10)
-
+	val chineseName: String = ChineseNames.random()
 }
