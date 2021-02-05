@@ -44,4 +44,8 @@ object HttpConf {
 			.orElse(Option(System.getProperty(propertyName)))
 			.getOrElse(defaultValue)
 	}
+
+	object URLS {
+		val MMOCK_FORM = s"${baseUrl}/body/form"
+	}
 }
