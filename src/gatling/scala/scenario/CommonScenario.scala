@@ -1,6 +1,6 @@
 package scenario
 
-import cases.{DownloadObject, UploadObject}
+import steps.{DownloadObject, UploadObject}
 import io.gatling.core.Predef._
 import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
 import singleObjects._

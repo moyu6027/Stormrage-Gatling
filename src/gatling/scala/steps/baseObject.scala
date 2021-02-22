@@ -1,4 +1,4 @@
-package cases
+package steps
 
 import cn.homecredit.qc.common.util.ChineseNames
 import io.gatling.core.Predef._

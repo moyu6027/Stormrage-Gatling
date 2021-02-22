@@ -3,7 +3,10 @@ package simulations
 // generated automatically by Taurus
 
 import io.gatling.core.Predef._
+import io.gatling.core.controller.inject.open.OpenInjectionStep
+import io.gatling.core.structure.{ChainBuilder, ScenarioBuilder}
 import io.gatling.http.Predef._
+
 import scala.concurrent.duration._
 
 class TaurusSimulation extends Simulation {
@@ -19,9 +22,9 @@ class TaurusSimulation extends Simulation {
     .header("Authorization", "Basic YWFhOmJiYg==")
     .header("Content-Type", "application/json")
 
-  var testScenario = scenario("Taurus Scenario")
+  var testScenario: ScenarioBuilder = scenario("Taurus Scenario")
 
-  var execution = exec(
+  var execution: ChainBuilder = exec(
     http("Token").post("/api/token")
       .body(StringBody("""{"code": "0113xWKw0cFQqd1VazMw0LBMKw03xWKa"}"""))
   ).exec(
@@ -34,7 +37,7 @@ class TaurusSimulation extends Simulation {
   else
     testScenario = testScenario.repeat(iterationLimit.toInt){execution}
 
-  val virtualUsers =
+  val virtualUsers: OpenInjectionStep =
     if (rampUpTime > 0)
       rampUsers(concurrency) during (rampUpTime.seconds)
     else
