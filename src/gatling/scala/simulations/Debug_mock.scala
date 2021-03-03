@@ -10,20 +10,23 @@ import scala.concurrent.duration.DurationInt
 
 class Debug_mock extends MockScenario with BaselineTest with BenchmarkTest with LoadTest with StressTest {
 
-  lazy val increment: Int = getIntParam("increment")
   lazy val times: Int = getIntParam("times")
 
   /***************** SETUP ************************/
+//  setUp(
+//    baseline(mockScenario("Baseline Test")).andThen(
+//      benchmark_closed(mockScenario("Benchmark Test"),userCount,rampDuration,testDuration).andThen(
+//        load_closed(mockScenario("Load Test"), userCount,increment,times,testDuration).andThen(
+//          stress_open(mockScenario("Stress Test"), userRate, 5.minutes,500)
+//        )
+//      )
+//    )
+//  )
+//  .protocols(HttpConf.httpConf)
+
   setUp(
-    baseline(mockScenario("Baseline Test")).andThen(
-      benchmark_closed(mockScenario("Benchmark Test"),userCount,rampDuration,testDuration).andThen(
-        load_closed(mockScenario("Load Test"), userCount,increment,times).andThen(
-          stress_open(mockScenario("Stress Test"), userCount*100, 15.minutes,1000)
-        )
-      )
-    )
-  )
-  .protocols(HttpConf.httpConf)
+    stress_open(mockScenario("Stress Test"), userRate, 5.minutes,100)
+  ).protocols(HttpConf.httpConf)
 //      .assertions(
 //        global.successfulRequests.percent.gte(97),
 //        global.responseTime.max.lte(30000),

@@ -2,8 +2,9 @@ package singleObjects
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-import ru.tinkoff.gatling.config.SimulationConfig
-import ru.tinkoff.gatling.config.SimulationConfig._
+import io.gatling.http.protocol.HttpProtocolBuilder
+import hccn.qe.gatling.config.SimulationConfig
+import hccn.qe.gatling.config.SimulationConfig._
 
 /** HTTP configuration */
 object HttpConf {
@@ -15,10 +16,11 @@ object HttpConf {
 	/*
   Setting up Http Protocols (BaseUrl , Headers etc.)
    */
-	val httpConf = http
+	val httpConf: HttpProtocolBuilder = http
   	.baseUrl(baseUrl)
 		.acceptHeader("text/html,application/xhtml+xml,application/json,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
 		.acceptEncodingHeader("gzip, deflate, br")
+		.shareConnections
 
 //	.userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36 PerformanceTest/1.0") // sample value, you can add e.g. phrase PerformanceTest/1.0 to find requests easier e.g. in Kibana logs
 // .acceptLanguageHeader("en-US,en;q=0.9,pl-PL;q=0.8,pl;q=0.7")

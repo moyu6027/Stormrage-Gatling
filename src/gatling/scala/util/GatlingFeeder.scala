@@ -6,7 +6,7 @@ import com.redis.RedisClientPool
 import io.gatling.core.feeder.{Feeder, FileBasedFeederBuilder}
 import io.gatling.redis.Predef.redisFeeder
 import io.gatling.redis.feeder.RedisFeederBuilder
-import ru.tinkoff.gatling.feeders._
+import hccn.qe.gatling.feeders._
 
 import scala.util.Random
 

@@ -5,7 +5,7 @@ import io.gatling.core.Predef._
 import io.gatling.core.feeder.Feeder
 import io.gatling.core.structure.ChainBuilder
 import io.gatling.http.Predef._
-import ru.tinkoff.gatling.config.SimulationConfig.getStringParam
+import hccn.qe.gatling.config.SimulationConfig.getStringParam
 import util.GatlingFeeder
 
 class baseObject {
