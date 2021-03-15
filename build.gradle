@@ -58,10 +58,14 @@ dependencies {
     gatlingImplementation 'org.apache.commons:commons-lang3:3.4' // <2>
     gatlingRuntimeOnly 'cglib:cglib-nodep:3.2.0' // <3>
     gatlingImplementation "com.rabbitmq:amqp-client:5.11.0"
+    gatlingImplementation("org.apache.kafka:kafka-clients:2.7.0") {
+        exclude group: "org.slf4j", module: "slf4j-api"
+    }
     gatling 'cn.homecredit.qc:cucumber-common-library:1.5.4-TEMP-RELEASE'
     gatlingImplementation files('gatling-lib-loadmodel-0.0.1-SNAPSHOT.jar')
     gatlingImplementation files('gatling-lib-toolbox-0.0.1-SNAPSHOT.jar')
     gatlingImplementation files('gatling-lib-amqp-0.0.1-SNAPSHOT.jar')
+    gatlingImplementation files('gatling-lib-kafka-0.0.1-SNAPSHOT.jar')
 }
 
 //group = 'com.gatling.sample'
