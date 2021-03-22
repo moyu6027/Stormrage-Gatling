@@ -25,7 +25,7 @@ class Debug_mock extends MockScenario with BaselineTest with BenchmarkTest with 
 //  .protocols(HttpConf.httpConf)
 
   setUp(
-    stress_open(mockScenario("Stress Test"), userRate, 5.minutes,100)
+    baseline(mockScenario("Stress Test"))
   ).protocols(HttpConf.httpConf)
 //      .assertions(
 //        global.successfulRequests.percent.gte(97),
