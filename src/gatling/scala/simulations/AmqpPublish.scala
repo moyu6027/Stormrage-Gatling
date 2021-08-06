@@ -1,9 +1,9 @@
 package simulations
 
 import _root_.scenario.CommonScenario
-import hccn.qe.gatling.amqp.Predef._
-import hccn.qe.gatling.amqp.protocol.AmqpProtocolBuilder
-import hccn.qe.gatling.feeders.IdFeeder
+import cn.qe.gatling.amqp.Predef._
+import cn.qe.gatling.amqp.protocol.AmqpProtocolBuilder
+import cn.qe.gatling.feeders.IdFeeder
 import io.gatling.core.Predef._
 import io.gatling.core.feeder.Feeder
 import io.gatling.core.structure.ScenarioBuilder

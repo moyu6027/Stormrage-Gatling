@@ -1,5 +1,4 @@
-![Gatlinglogo](gatling_gun.png "Gatling logo")
-![Gatlinglogo](storm.png "Gatling logo")
+![Gatlinglogo](Gatling.png "Gatling logo")
 
 Stormrage-Gatling performance tests
 =========================
@@ -63,4 +62,4 @@ Make sure to use the proper load model that matches the load your live system ex
 * Load tests analysis with aggregated data in `InfluxDb` displayed in comprehensive reports generated with `Grafana`
 * Handle comparison in `Grafana` with `JavaScript`
 * Load tests logs with `Loki`
-* Aggregated library with Cucumber Common Library
+* Aggregated library with GRPC,MQTT etc

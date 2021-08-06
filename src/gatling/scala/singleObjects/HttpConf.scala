@@ -3,8 +3,8 @@ package singleObjects
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.protocol.HttpProtocolBuilder
-import hccn.qe.gatling.config.SimulationConfig
-import hccn.qe.gatling.config.SimulationConfig._
+import cn.qe.gatling.config.SimulationConfig
+import cn.qe.gatling.config.SimulationConfig._
 
 /** HTTP configuration */
 object HttpConf {

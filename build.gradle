@@ -5,7 +5,7 @@
 plugins {
     id 'java'
     id 'scala'
-    id 'io.gatling.gradle' version '3.4.2'
+    id 'io.gatling.gradle' version '3.6.1'
 }
 
 project.sourceSets {
@@ -47,25 +47,30 @@ repositories {
         url 'https://central'
     }
     maven {
-        url 'http://qa-gov.cn.lab/nexus/repository/maven-releases/'
+        url 'https://repo.maven.apache.org/maven2'
+        name 'Maven Central'
     }
 }
 
 dependencies {
 //    compile 'org.scala-lang:scala-library:2.12.12'
-    testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.4.2'
-    gatling 'com.google.code.gson:gson:2.8.6' // <1>
-    gatlingImplementation 'org.apache.commons:commons-lang3:3.4' // <2>
-    gatlingRuntimeOnly 'cglib:cglib-nodep:3.2.0' // <3>
-    gatlingImplementation "com.rabbitmq:amqp-client:5.11.0"
-    gatlingImplementation("org.apache.kafka:kafka-clients:2.7.0") {
+    testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.6.1'
+    gatling 'com.google.code.gson:gson:2.8.7' // <1>
+    gatlingImplementation 'org.apache.commons:commons-lang3:3.12.0' // <2>
+    gatlingRuntimeOnly 'cglib:cglib-nodep:3.3.0' // <3>
+    gatlingImplementation 'com.rabbitmq:amqp-client:5.13.0'
+    gatlingImplementation 'org.fusesource.mqtt-client:mqtt-client:1.16'
+    gatlingImplementation('org.apache.kafka:kafka-clients:2.8.0') {
         exclude group: "org.slf4j", module: "slf4j-api"
     }
-    gatling 'cn.homecredit.qc:cucumber-common-library:1.5.4-TEMP-RELEASE'
-    gatlingImplementation files('gatling-lib-loadmodel-0.0.1-SNAPSHOT.jar')
-    gatlingImplementation files('gatling-lib-toolbox-0.0.1-SNAPSHOT.jar')
-    gatlingImplementation files('gatling-lib-amqp-0.0.1-SNAPSHOT.jar')
-    gatlingImplementation files('gatling-lib-kafka-0.0.1-SNAPSHOT.jar')
+//    gatlingImplementation files('gatling-lib-loadmodel-0.0.1-SNAPSHOT.jar')
+//    gatlingImplementation files('gatling-lib-toolbox-0.0.1-SNAPSHOT.jar')
+//    gatlingImplementation files('gatling-lib-amqp-0.0.1-SNAPSHOT.jar')
+    gatlingImplementation files('libs/gatling-lib-kafka-0.0.1-SNAPSHOT.jar')
+    gatlingImplementation files('libs/gatling-lib-amqp-0.0.2-SNAPSHOT.jar')
+    gatlingImplementation files('libs/gatling-lib-toolbox-0.0.2-SNAPSHOT.jar')
+    gatlingImplementation files('libs/gatling-lib-loadmodel-0.0.2-SNAPSHOT.jar')
+    gatlingImplementation files('libs/gatling-lib-mqtt-0.0.2-SNAPSHOT.jar')
 }
 
 //group = 'com.gatling.sample'

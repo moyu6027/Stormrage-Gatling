@@ -3,9 +3,9 @@ package simulations
 import _root_.scenario.{CommonScenario, MockScenario}
 import io.gatling.core.Predef._
 import singleObjects._
-import hccn.qe.gatling.loadmodels._
+import cn.qe.gatling.loadmodels._
 import io.gatling.core.structure.{PopulationBuilder, ScenarioBuilder}
-import hccn.qe.gatling.config.SimulationConfig._
+import cn.qe.gatling.config.SimulationConfig._
 import scala.concurrent.duration.DurationInt
 
 class Debug_mock extends MockScenario with BaselineTest with BenchmarkTest with LoadTest with StressTest {

@@ -5,7 +5,7 @@ import io.gatling.core.feeder.Feeder
 import io.gatling.core.structure.ChainBuilder
 import io.gatling.http.Predef._
 import util.{GatlingFeeder, GatlingHelper}
-import hccn.qe.gatling.config.SimulationConfig._
+import cn.qe.gatling.config.SimulationConfig._
 
 object DownloadObject extends baseObject {
 
