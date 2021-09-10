@@ -6,6 +6,9 @@ plugins {
     id 'java'
     id 'scala'
     id 'io.gatling.gradle' version '3.6.1'
+    id 'idea'
+    id "com.google.protobuf" version "0.8.17"
+//    id 'application'
 }
 
 project.sourceSets {
@@ -42,7 +45,7 @@ gatling {
 }
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
     maven {
         url 'https://central'
     }
@@ -55,7 +58,7 @@ repositories {
 dependencies {
 //    compile 'org.scala-lang:scala-library:2.12.12'
     testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.6.1'
-    gatling 'com.google.code.gson:gson:2.8.7' // <1>
+    gatling 'com.google.code.gson:gson:2.8.8' // <1>
     gatlingImplementation 'org.apache.commons:commons-lang3:3.12.0' // <2>
     gatlingRuntimeOnly 'cglib:cglib-nodep:3.3.0' // <3>
     gatlingImplementation 'com.rabbitmq:amqp-client:5.13.0'
@@ -71,7 +74,38 @@ dependencies {
     gatlingImplementation files('libs/gatling-lib-toolbox-0.0.2-SNAPSHOT.jar')
     gatlingImplementation files('libs/gatling-lib-loadmodel-0.0.2-SNAPSHOT.jar')
     gatlingImplementation files('libs/gatling-lib-mqtt-0.0.2-SNAPSHOT.jar')
+    gatlingImplementation files('libs/gatling-lib-dubbo-0.0.2-SNAPSHOT.jar')
+    gatlingImplementation files('libs/dubbo-samples-api-1.0-SNAPSHOT.jar')
+//    gatlingImplementation files('libs/user-details-proto-1.0-SNAPSHOT.jar')
+    implementation 'com.google.protobuf:protobuf-java:3.17.3'
+    implementation 'io.grpc:grpc-netty-shaded:1.39.0'
+    implementation 'io.grpc:grpc-protobuf:1.39.0'
+    implementation 'io.grpc:grpc-stub:1.39.0'
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    gatling 'com.github.phisgr:gatling-javapb:1.1.1'
+    gatling 'com.github.phisgr:gatling-grpc:0.11.1'
+    gatlingImplementation 'org.apache.dubbo:dubbo:3.0.2.1'
 }
+
+protobuf {
+    protoc {
+        artifact = 'com.google.protobuf:protoc:3.14.0'
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.34.1'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+//application {
+//    mainClassName = 'cn.qe.gatling.example.DemoServer'
+//}
 
 //group = 'com.gatling.sample'
 //version = '3.4.2'

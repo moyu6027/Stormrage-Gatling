@@ -1,0 +1,63 @@
+{
+  "id": "d0b16651-1139-4abc-aa20-9cb1fc4c1793",
+  "title": "Hello",
+  "genres": [
+    "ACTION"
+  ],
+  "directors": [
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    }
+  ],
+  "writers": [
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    }
+  ],
+  "stars": [
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    },
+    {
+      "first_name": "Hello",
+      "last_name": "Hello"
+    }
+  ],
+  "year_of_production": 10,
+  "duration_minutes": 10
+}
